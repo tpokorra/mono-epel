@@ -1,6 +1,6 @@
 Name:    banshee
 Version: 2.6.2
-Release: 12%{?dist}
+Release: 13%{?dist}
 Summary: Easily import, manage, and play selections from your music collection
 
 License: MIT
@@ -55,7 +55,7 @@ BuildRequires: dbus-sharp-glib-devel
 BuildRequires: mono-data mono-data-sqlite mono-addins-devel
 
 # Gnome/Glib
-BuildRequires: gnome-desktop-devel
+BuildRequires: gnome-desktop3-devel
 
 # X
 BuildRequires: libXxf86vm-devel
@@ -205,6 +205,9 @@ update-mime-database %{?fedora:-n} %{_datadir}/mime &> /dev/null || :
 %{_libdir}/pkgconfig/banshee-*.pc
 
 %changelog
+* Wed Jan 06 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 2.6.2-13
+- on Epel7, we have gnome-desktop3-devel instead of gnome-desktop-devel
+
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.6.2-12
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
