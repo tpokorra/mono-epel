@@ -2,22 +2,16 @@
 # workaround bugs #1224945, #1228570
 %undefine _hardened_build
 %endif
-%global bootstrap 0
+%global bootstrap 1
 %if 0%{?rhel}%{?el6}%{?el7}
-%if 0%{?el6}
-%global mono_arches %ix86 x86_64 %{arm} sparcv9 alpha s390x ppc ppc64 ppc64le
-%endif
 # see https://lists.fedoraproject.org/pipermail/packaging/2011-May/007762.html
 %global _missing_build_ids_terminate_build 0
 %global debug_package %{nil}
-# see https://fedorahosted.org/fpc/ticket/395
-%global _monodir %{_prefix}/lib/mono
-%global _monogacdir %{_monodir}/gac
 %endif
 
 Name:           mono
 Version:        4.2.1
-Release:        6%{?dist}
+Release:        7%{?dist}
 Summary:        Cross-platform, Open Source, .NET development framework
 
 Group:          Development/Languages
@@ -743,6 +737,10 @@ mkdir -p %{buildroot}%{_datadir}/gdb/auto-load%{_bindir}
 %{_libdir}/pkgconfig/monodoc.pc
 
 %changelog
+* Wed Jan 06 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.1-7
+- remove Mono macros for Epel, should be defined in epel-rpm-macros
+- enable bootstrap build for Epel
+
 * Mon Jan 04 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 4.2.1-6
 - another fix for gdb/auto-load mono-gdb.py. directory is owned by GDB
 
