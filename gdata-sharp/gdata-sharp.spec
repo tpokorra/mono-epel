@@ -3,7 +3,7 @@
 
 Name:           gdata-sharp
 Version:        1.4.0.2
-Release:        16%{?dist}
+Release:        17%{?dist}
 Summary:        .NET library for the Google Data API
 
 Group:          System Environment/Libraries
@@ -14,7 +14,7 @@ Source0:        http://google-gdata.googlecode.com/files/%{upstream_name}-%{vers
 # http://code.google.com/p/google-gdata/source/detail?spec=svn933&r=890
 Patch0:         %{upstream_name}-1.4.0.2-pkgconfig.patch
 
-BuildRequires:  mono-devel mono-nunit
+BuildRequires:  mono-devel nunit nunit-devel
 #Requires:       
 
 # Mono only available on these:
@@ -59,6 +59,8 @@ developing applications that use %{name}.
 %patch0 -p1 -b .pkgconfig
 
 sed -i "s#gmcs#mcs#g" Makefile
+# fix error: Metadata file `nunit.framework.dll' could not be found
+sed -i "s#-r:nunit.framework.dll#-pkg:nunit#g" Makefile
 
 %build
 make %{?_smp_mflags} PREFIX=%{_prefix}
@@ -84,6 +86,9 @@ test "%{_libdir}" = "%{_prefix}/lib" || mv $RPM_BUILD_ROOT/%{_prefix}/lib/pkgcon
 
 
 %changelog
+* Wed Jan  6 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 1.4.0.2-17
+- fix error: Metadata file `nunit.framework.dll' could not be found
+
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.4.0.2-16
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
