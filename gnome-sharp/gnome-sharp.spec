@@ -1,6 +1,6 @@
 Name:           gnome-sharp
 Version:        2.24.2
-Release:        10%{?dist}
+Release:        11%{?dist}
 Summary:        GTK+ and GNOME bindings for Mono
 
 Group:          System Environment/Libraries
@@ -18,7 +18,6 @@ BuildRequires:  mono-devel gtk2-devel libart_lgpl-devel gnome-vfs2-devel libgnom
 BuildRequires:  gtk-sharp2-devel >= 2.12.7
 BuildRequires:  gtk-sharp2-gapi >= 2.12.7
 BuildRequires:  librsvg2-devel vte-devel
-BuildRequires:  libgnomeprintui22-devel
 BuildRequires:  automake, libtool
 
 # Mono only available on these:
@@ -76,6 +75,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/*.*a
 %{_libdir}/pkgconfig/gconf-sharp-peditors-2.0.pc
 
 %changelog
+* Wed Jan  6 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 2.24.2-11
+- drop build requirement for retired libgnomeprintui22, it is not actually needed
+
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 2.24.2-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
