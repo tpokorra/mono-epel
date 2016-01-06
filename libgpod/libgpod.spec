@@ -8,14 +8,11 @@
 %else
 %global with_mono 0
 %endif
-%if 0%{?rhel}
-%global with_mono 0
-%endif
 
 Summary: Library to access the contents of an iPod
 Name: libgpod
 Version: 0.8.3
-Release: 10%{?dist}
+Release: 11%{?dist}
 License: LGPLv2+
 Group: System Environment/Libraries
 URL: http://www.gtkpod.org/libgpod.html
@@ -208,6 +205,9 @@ find %{buildroot} -type f -name "*.a" -delete
 %endif
 
 %changelog
+* Wed Jan  6 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 0.8.3-11
+- build with Mono on Epel
+
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.8.3-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
