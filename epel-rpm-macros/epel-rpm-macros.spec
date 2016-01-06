@@ -1,6 +1,6 @@
 Name:           epel-rpm-macros
 Version:        7
-Release:        4
+Release:        5
 Summary:        Extra Packages for Enterprise Linux RPM macros
 
 Group:          System Environment/Base
@@ -12,6 +12,7 @@ License:        GPLv2
 URL:            http://download.fedoraproject.org/pub/epel
 Source0:        macros.epel-rpm-macros
 Source1:        GPL
+Source2:        macros.mono-srpm
 
 BuildArch:     noarch
 Requires:      redhat-release >=  %{version}
@@ -27,13 +28,19 @@ install -pm 644 %{SOURCE1} .
 #GPG Key
 install -Dpm 644 %{SOURCE0} \
     $RPM_BUILD_ROOT/usr/lib/rpm/macros.d/macros.epel-rpm-macros
+install -Dpm 644 %{SOURCE2} \
+    $RPM_BUILD_ROOT/usr/lib/rpm/macros.d/macros.mono-srpm
 
 %files
 %license GPL
 /usr/lib/rpm/macros.d/macros.epel-rpm-macros
+/usr/lib/rpm/macros.d/macros.mono-srpm
 
 
 %changelog
+* Wed Jan  6 2016 Timotheus Pokorra <timotheus.pokorra@solidcharity.com> - 7-5
+- add macros for Mono (#1295117)
+
 * Thu Oct  8 2015 Thomas Spura <tomspur@fedoraproject.org> - 7-4
 - Fix python_provide macro to use epoch and obsolete previous python- package
 
